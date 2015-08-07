@@ -64,7 +64,7 @@
                                         <asp:TextBox ID="TextBox5" runat="server" CssClass="txt_pd" Height="15px" 
                                             placeholder="E-Mail ID" ValidationGroup="ADD" Width="300px"></asp:TextBox>
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
-                                            ControlToValidate="TextBox5" ErrorMessage="Invalid Number" Font-Names="Calibri" 
+                                            ControlToValidate="TextBox5" ErrorMessage="Invalid E-Mail" Font-Names="Calibri" 
                                             Font-Size="Small" ForeColor="#CC3300" 
                                             ValidationExpression="^(.+)@([^\.].*)\.([a-z]{2,})$"></asp:RegularExpressionValidator>
                                     </div>

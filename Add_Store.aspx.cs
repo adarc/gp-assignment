@@ -16,19 +16,25 @@ public partial class Add_Store : System.Web.UI.Page
     protected void Button2_Click(object sender, EventArgs e)
     {
         //Add New Store 
-        string str = "Insert into tbl_Store (Name,Contact_No, E_Mail,About_Store, Address, Status,Cover, Reg_Date) Values";
-        str += "(";
-        str += "'"+TextBox1.Text+"',";
-        str += "'" + TextBox2.Text + "',";
-        str += "'" + TextBox5.Text + "',";
-        str += "'" + TextBox7.Text + "',";
-        str += "'" + Session["Loc"].ToString() + "',";
-        str += "'TRUE',";
-        str += "'~/Images/images.jpg',";
-        str += "'" + DateTime.Now.ToShortDateString()+ "'";
-        str += ")";
-        c1.executeQry(str);
-        MultiView1.ActiveViewIndex = 1;
+        try
+        {
+            string str = "Insert into tbl_Store (Name,Contact_No, E_Mail,About_Store, Address, Status,Cover, Reg_Date) Values";
+            str += "(";
+            str += "'" + TextBox1.Text + "',";
+            str += "'" + TextBox2.Text + "',";
+            str += "'" + TextBox5.Text + "',";
+            str += "'" + TextBox7.Text + "',";
+            str += "'" + Session["Loc"].ToString() + "',";
+            str += "'TRUE',";
+            str += "'~/Images/images.jpg',";
+            str += "'" + DateTime.Now.ToShortDateString() + "'";
+            str += ")";
+            c1.executeQry(str);
+            MultiView1.ActiveViewIndex = 1;
+        }
+        catch
+        {
+        }
 
     }
     protected void Button6_Click(object sender, EventArgs e)
@@ -62,14 +68,14 @@ public partial class Add_Store : System.Web.UI.Page
         {
             string store_id = c1.selectScaler("Select Max(S_Id) from tbl_Store");
             string max_id = c1.selectScaler("Select Max(P_Id) from tbl_Photogallery");
-                 string uploadFolder = Request.PhysicalApplicationPath + "PHOTO\\";
+                 string uploadFolder = Request.PhysicalApplicationPath + "PHOTOS\\";
             string extn = Path.GetExtension(FileUpload1.PostedFile.FileName);
             string profilename = store_id + "_Galleryphoto" + max_id;
             if (extn == ".png" || extn == ".jpg" || extn == ".gif" || extn == ".bmp")
             {
                 FileUpload1.SaveAs(uploadFolder + profilename + extn);
 
-                string path = "~/PHOTO/" + profilename + extn;
+                string path = "~/PHOTOS/" + profilename + extn;
                 //string path;
                // FileUpload1.SaveAs(Server.MapPath("~/Photos/") + FileUpload1.FileName);
                // path = "~/Photos/" + FileUpload1.FileName;
