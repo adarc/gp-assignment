@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        body {font: 600 14px/24px "verdana", "Calibri", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande"; min-width:1000px;}
+    .container {width:100%}
+     section,aside {margin: 10px;}
+     section {float: left; width: 340px;}
+     aside {float: right; width: 158px;}
+     .header{background-color:#f8f8f8;}   .top_header{height:40px; border-bottom:1px solid silver;}
+     .main_header{height:80px; background-color:white;padding-bottom:15px; padding-top:10px;} .Sub_header{width:90%;}
+     .content{}
+     .footer{width:100%; background-color:rgb(21,21,21); height:40px;}
+   .txt_pd{padding:5px; font-family:Calibri; font-size:small; border:1px solid Silver; height:15px;}
+      .base{height:35px; text-align:left;}
+        .style1
+        {
+            width: 11px;
+        }
+   
+    </style>
+</head>
+
+<body style="padding:0px; margin:0px;">
+    <form id="form1" runat="server">
+    <center>
+    <!-- Define Main Masterpage Div-->
+  <div class="Container">
+    <!-- Header Div-->
+  <div class="header">
+  <div align="center" class="top_header" ">
+  <div style="width:90%;">
+      <table cellpadding="0" cellspacing="0" class="container">
+          <tr>
+              <td height="40px" 
+                  style="border-left-style: solid; border-right-style: solid; border-width: 1px; border-color: #CCCCCC" 
+                  width="100px" align="center" bgcolor="White">
+                  <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="False" 
+                      Font-Names="Calibri" Font-Size="Medium">HOME</asp:HyperLink>
+              </td>
+              <td style="border-right-style: solid; border-width: 1px; border-color: #CCCCCC" 
+                  width="120px" align="center" bgcolor="White">
+                  <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="False" 
+                      Font-Names="Calibri" Font-Size="Medium" Font-Underline="False" 
+                      ForeColor="Black" onclick="LinkButton1_Click">LOGOUT</asp:LinkButton>
+              </td>
+              <td align="right">
+       <asp:Label ID="Label2" runat="server" Font-Names="Calibri" Font-Size="Medium" 
+           ForeColor="#CC6600" Text="STORE LOGIN" Font-Bold="False"></asp:Label>
+              </td>
+          </tr>
+      </table>
+      </div></div>
+  <div class="main_header"  align="center">
+  <div style="width:90%; height:80px; ">
+      <table width="100%" >
+          <tr>
+              <td align="left" height="80px">
+                  <asp:ImageButton ID="ImageButton1" runat="server" Height="60px" 
+                      ImageUrl="~/images/Gram-Power_BigLogo.png" />
+                  </td>
+              <td>
+                  &nbsp;</td>
+              <td bgcolor="#336699" width="120px" align="center">
+                  <asp:HyperLink ID="HyperLink3" runat="server" Font-Bold="False" 
+                      Font-Names="Calibri" Font-Size="Medium" ForeColor="White" 
+                      NavigateUrl="~/View_Stores.aspx">STORES</asp:HyperLink>
+              </td>
+              <td class="style1">
+                  &nbsp;</td>
+              <td bgcolor="#336699" width="120px" align="center">
+                  <asp:HyperLink ID="HyperLink4" runat="server" Font-Bold="False" 
+                      Font-Names="Calibri" Font-Size="Medium" ForeColor="White" 
+                      NavigateUrl="~/Add_Store.aspx">ADD STORE</asp:HyperLink>
+              </td>
+              <td>
+                  &nbsp;</td>
+              <td bgcolor="#336699" width="120px" align="center">
+                  &nbsp;</td>
+          </tr>
+      </table>
+      </div></div>
+  </div>
+  <div class="Containt">  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder></div>
+   <div class="footer"> <div style="width:90%; padding-top:10px; text-align:left;">
+       <asp:Label ID="Label1" runat="server" Font-Names="Calibri" Font-Size="Medium" 
+           ForeColor="White" Text="&amp;copy 2015 www.grampower.com"></asp:Label>
+       </div></div>
+  </div>
+
+    </center>
+  
+    </form>
+</body>
+</html>
