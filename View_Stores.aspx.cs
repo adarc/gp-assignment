@@ -16,21 +16,21 @@ public partial class View_Stores : System.Web.UI.Page
             SelectData("Select * from tbl_Store order By S_Id Desc");
         }
     }
-    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    {
-        GridView1.PageIndex = e.NewPageIndex;
-        SelectData("Select * from tbl_Store order By S_Id Desc");
+    //protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    //{
+    //    GridView1.PageIndex = e.NewPageIndex;
+    //    SelectData("Select * from tbl_Store order By S_Id Desc");
 
-    }
+    //}
     public void SelectData(string str)
     {
        
-        GridView1.DataSource = c1.selectds(str);
-        GridView1.DataBind();
+        //GridView1.DataSource = c1.selectds(str);
+        //GridView1.DataBind();
         DataList1.DataSource = c1.selectds(str);
         DataList1.DataBind();
-        Label3.Text="[ "+ GridView1.Rows.Count.ToString()+" ]";
-        if (GridView1.Rows.Count < 1)
+        Label3.Text="[ "+ DataList1.Items.Count.ToString()+" ]";
+        if (DataList1.Items.Count < 1)
         {
             LinkButton1.Visible = true;
            
@@ -53,6 +53,12 @@ public partial class View_Stores : System.Web.UI.Page
         if (e.CommandName == "Detail")
         {
             Response.Redirect("Store_Profile.aspx?Store="+e.CommandArgument);
+        }
+
+        if (e.CommandName == "Delete")
+        {
+            c1.executeQry( "Delete from tbl_store where S_id='"+e.CommandArgument+"'");
+            SelectData("Select * from tbl_Store order By S_Id Desc");
         }
     }
 }

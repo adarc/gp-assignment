@@ -104,7 +104,11 @@ public partial class Add_Store : System.Web.UI.Page
         }
         if (Sunday_Act.SelectedIndex != 0)
         {
-            Addhour("Sunday", (S_O_T.SelectedValue.ToString() + SO.SelectedValue.ToString()), S_C_T.SelectedValue.ToString() + SC.SelectedValue.ToString());
+            Addhour("Sunday", (SU_O_T.SelectedValue.ToString() + SUO.SelectedValue.ToString()), SU_C_T.SelectedValue.ToString() + SUC.SelectedValue.ToString());
+        }
+        else
+        {
+            Addhour("Sunday", "", "CLOSE");
         }
         Response.Redirect("View_Stores.aspx");
     }
@@ -126,5 +130,13 @@ public partial class Add_Store : System.Web.UI.Page
     protected void Button7_Click(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 2;
+    }
+    protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        if (e.CommandName == "Delete")
+        {
+            c1.executeQry("Delete from tbl_Products where PR_Id='" + e.CommandArgument + "'");
+            Products();
+        }
     }
 }

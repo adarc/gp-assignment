@@ -1,9 +1,25 @@
 ﻿<%@ Page Title="Store Profile" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Store_Profile.aspx.cs" Inherits="Store_Profile" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    
+   
+   <script src="//code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function ShowImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#<%=Image1.ClientID%>').prop('src', e.target.result)
+                        .width(1000)
+                        .height(300);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 <style type="text/css">
-  
+  .mpc{background-color:Black; opacity:0.6;}
      .modal
      {
         display: none; 
@@ -42,12 +58,20 @@
                         <td align="left">
                             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Arial" 
                     Font-Size="Large" ForeColor="#CC6600" Text="MY STORES"></asp:Label>
-            &nbsp;</td>
-                        <td width="200px" align="right">
-                            <asp:Button ID="Button2" runat="server" BorderColor="#CCCCCC" 
+                            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                            </asp:ScriptManager>
+            </td>
+                        <td align="right">
+                            <asp:Label ID="Label8" runat="server" Font-Bold="False" Font-Names="Arial" 
+                    Font-Size="Small" ForeColor="#009933" Text="UPLOAD COVER PHOTO" Visible="False"></asp:Label>
+                            <asp:FileUpload ID="FileUpload1" runat="server" 
+                                onchange="ShowImagePreview(this);" Font-Names="Calibri" Font-Size="Small" 
+                                Visible="False" />
+&nbsp;<asp:Button ID="Button2" runat="server" BorderColor="#CCCCCC" 
                     BorderStyle="Solid" BorderWidth="1px" Font-Names="Calibri" Font-Size="Small" 
-                    Height="25px" Text="UPLOAD COVER PHOTO" />
+                    Height="25px" Text="UPLOAD" onclick="Button2_Click" Visible="False" />
                         </td>
+                       
                         <td width="150px" align="right">
                             <asp:Button ID="Button1" runat="server" BorderColor="#CCCCCC" 
                     BorderStyle="Solid" BorderWidth="1px" Font-Names="Calibri" Font-Size="Small" 
@@ -250,7 +274,9 @@
                             <asp:Label ID="Label7" runat="server" Font-Bold="False" Font-Names="Verdana" 
                     Font-Size="Small" ForeColor="#336699" Text="STORE LOCATION"></asp:Label>
                                </div>
-                <div style="border: 1px solid #CCCCFF; height:300px; margin-bottom:40px;"></div>
+                <div style="border: 1px solid #CCCCFF; height:300px; margin-bottom:40px;">
+                
+                </div>
                 </div>
             </div>
         </div>

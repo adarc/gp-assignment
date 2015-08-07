@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Show All Stores" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="View_Stores.aspx.cs" Inherits="View_Stores" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -13,6 +15,8 @@
                     Font-Size="Large" ForeColor="#336699" Text="MY STORES"></asp:Label>
             &nbsp;<asp:Label ID="Label3" runat="server" Font-Bold="False" Font-Names="Calibri" 
                     Font-Size="Large" ForeColor="#336699"></asp:Label>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
             </td>
             <td width="200px">
                 <asp:TextBox ID="TextBox1" runat="server" BorderColor="#CCCCCC" 
@@ -66,6 +70,16 @@
                             BorderColor="#FF9933" BorderStyle="Solid" BorderWidth="1px" 
                             CommandArgument='<%# Eval("S_Id") %>' CommandName="Detail" Font-Names="Calibri" 
                             Font-Size="Small" ForeColor="White" Height="25px" Text="DETAIL" />
+                        <br />
+                        <br />
+                        <asp:Button ID="Button2" runat="server" BackColor="#FF9933" 
+                            BorderColor="#FF9933" BorderStyle="Solid" BorderWidth="1px" 
+                            CommandArgument='<%# Eval("S_Id") %>' CommandName="Delete" Font-Names="Calibri" 
+                            Font-Size="Small" ForeColor="White" Height="25px" Text="DELETE" />
+                        <asp:ConfirmButtonExtender ID="Button2_ConfirmButtonExtender" runat="server" 
+                            ConfirmText="Are You Sure Want To Delete ?" Enabled="True" 
+                            TargetControlID="Button2">
+                        </asp:ConfirmButtonExtender>
                     </td>
                 </tr>
                 <tr>
@@ -73,9 +87,9 @@
                         <asp:Label ID="Label4" runat="server" Enabled="False" Font-Bold="False" 
                             Font-Names="Verdana" Font-Size="Small" ForeColor="Black" Text="Contact No. :"></asp:Label>
                         <asp:Label ID="Label5" runat="server" Enabled="False" Font-Bold="False" 
-                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" Text="+91"></asp:Label>
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="#CC6600" Text="+91"></asp:Label>
                         <asp:Label ID="Label6" runat="server" Enabled="False" Font-Bold="False" 
-                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="#CC6600" 
                             Text='<%# Eval("Contact_No") %>'></asp:Label>
                     </td>
                 </tr>
@@ -84,7 +98,7 @@
                         <asp:Label ID="Label7" runat="server" Enabled="False" Font-Bold="False" 
                             Font-Names="Verdana" Font-Size="Small" ForeColor="Black" Text="E-Mail ID :"></asp:Label>
                         <asp:Label ID="Label8" runat="server" Enabled="False" Font-Bold="False" 
-                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="#CC6600" 
                             Text='<%# Eval("E_Mail") %>'></asp:Label>
                     </td>
                 </tr>
@@ -95,8 +109,7 @@
     <asp:GridView ID="GridView1" runat="server" BackColor="White" 
         BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
         Font-Bold="False" Font-Names="Calibri" Font-Size="Medium" 
-        AllowPaging="True" AutoGenerateColumns="False" 
-        onpageindexchanging="GridView1_PageIndexChanging" Width="100%" 
+        AllowPaging="True" AutoGenerateColumns="False" Width="100%" 
         Visible="False">
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Store Title">

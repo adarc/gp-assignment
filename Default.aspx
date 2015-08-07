@@ -12,6 +12,10 @@
     .pright{float:right; width:50%; height:400px;}
     .base{height:35px; text-align:left;}
     .txt_pd{padding:5px; font-family:Calibri; font-size:small; border:1px solid Silver; width:250px; height:15px;}
+        .style1
+        {
+            width: 100%;
+        }
     </style>
 </head>
 <body >
@@ -23,6 +27,8 @@
                       ImageUrl="~/images/Gram-Power_BigLogo.png" Width="90%" />
                   </div>
     <div class="pright"> 
+    <asp:ScriptManager ID="sm1" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="up1" runat="server" ><ContentTemplate>
     <div style="padding:100px; padding-top:150px; height:200px;"> <div class="base"> 
        <asp:Label ID="Label1" runat="server" Font-Names="Calibri" Font-Size="Large" 
            ForeColor="#336699" Text="STORE LOGIN"></asp:Label>
@@ -43,16 +49,31 @@
             Font-Size="Small" ForeColor="#CC3300" ValidationGroup="A"></asp:RequiredFieldValidator>
         </div>
     <div class="base" style="padding-bottom:10px;"> 
-                <asp:Button ID="Button1" runat="server" BorderColor="#CCCCCC" 
-                    BorderStyle="Solid" BorderWidth="1px" Font-Names="Calibri" Font-Size="Small" 
-                    Height="28px" Text="LOGIN" Width="80px" onclick="Button1_Click" 
-                    ValidationGroup="A" />
+                <table cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td width="100px">
+                            <asp:Button ID="Button1" runat="server" BorderColor="#CCCCCC" 
+                                BorderStyle="Solid" BorderWidth="1px" Font-Names="Calibri" Font-Size="Small" 
+                                Height="28px" onclick="Button1_Click" Text="LOGIN" ValidationGroup="A" 
+                                Width="80px" />
+                        </td>
+                        <td>
+                            <asp:UpdateProgress ID="UpdateProgress1" runat="server" 
+                                AssociatedUpdatePanelID="up1" DisplayAfter="100">
+                                <ProgressTemplate>
+                                    <asp:Image ID="Image1" runat="server" Height="20px" ImageUrl="~/loader.gif" />
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
+                        </td>
+                    </tr>
+                </table>
         </div>
     <div class="base">  
        <asp:Label ID="Label2" runat="server" Font-Names="Calibri" Font-Size="Medium" 
            ForeColor="#CC3300"></asp:Label>
         </div>
     </div>
+    </ContentTemplate></asp:UpdatePanel>
     </div>
     </div>
     </center>

@@ -84,7 +84,8 @@
                   style="border-left-style: solid; border-right-style: solid; border-width: 1px; border-color: #CCCCCC" 
                   width="100px" align="center" bgcolor="White">
                   <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="False" 
-                      Font-Names="Calibri" Font-Size="Medium">HOME</asp:HyperLink>
+                      Font-Names="Calibri" Font-Size="Medium" Font-Underline="False" 
+                      ForeColor="Black" NavigateUrl="~/View_Stores.aspx">HOME</asp:HyperLink>
               </td>
               <td style="border-right-style: solid; border-width: 1px; border-color: #CCCCCC" 
                   width="120px" align="center" bgcolor="White">
@@ -112,19 +113,21 @@
               <td bgcolor="#336699" width="120px" align="center">
                   <asp:HyperLink ID="HyperLink3" runat="server" Font-Bold="False" 
                       Font-Names="Calibri" Font-Size="Medium" ForeColor="White" 
-                      NavigateUrl="~/View_Stores.aspx">STORES</asp:HyperLink>
+                      NavigateUrl="~/View_Stores.aspx" Font-Underline="False">STORES</asp:HyperLink>
               </td>
               <td class="style1">
                   &nbsp;</td>
               <td bgcolor="#336699" width="120px" align="center">
                   <asp:HyperLink ID="HyperLink4" runat="server" Font-Bold="False" 
                       Font-Names="Calibri" Font-Size="Medium" ForeColor="White" 
-                      NavigateUrl="~/Add_Store.aspx">ADD STORE</asp:HyperLink>
+                      NavigateUrl="~/Add_Store.aspx" Font-Underline="False">ADD STORE</asp:HyperLink>
               </td>
               <td>
                   &nbsp;</td>
               <td bgcolor="#336699" width="120px" align="center">
-                  &nbsp;</td>
+                  <asp:HyperLink ID="HyperLink5" runat="server" Font-Bold="False" 
+                      Font-Names="Calibri" Font-Size="Medium" ForeColor="White">SETTINGS</asp:HyperLink>
+              </td>
           </tr>
       </table>
       </div></div>

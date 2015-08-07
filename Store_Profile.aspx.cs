@@ -30,6 +30,13 @@ public partial class Store_Profile : System.Web.UI.Page
                 Label5.Text = "Welcome in "+rd["name"].ToString();
                 Image1.ImageUrl = rd["Cover"].ToString();
                 Label6.Text = rd["About_Store"].ToString();
+
+            }
+            if (Image1.ImageUrl == "~/Images/images.jpg")
+            {
+                Label8.Visible = true;
+                Button2.Visible = true;
+                FileUpload1.Visible = true;
             }
         }
 
@@ -52,5 +59,18 @@ public partial class Store_Profile : System.Web.UI.Page
         string str = "Select * from tbl_Photogallery where Store_id='" + id + "'";
         DataList1.DataSource = c1.selectds(str);
         DataList1.DataBind();
+    }
+   
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        if(FileUpload1.HasFile)
+        {
+            string path;
+              FileUpload1.SaveAs(Server.MapPath("~/Photos/") + FileUpload1.FileName);
+            path = "~/Photos/" + FileUpload1.FileName;
+        string str = "Update tbl_store set cover='"+path+"' where S_id='"+Request.QueryString["Store"].ToString()+"'";
+        c1.executeQry(str);
+        Image1.ImageUrl = path;
+        }
     }
 }

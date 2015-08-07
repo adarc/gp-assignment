@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="base">
                                         <asp:TextBox ID="TextBox8" runat="server" CssClass="txt_pd" Height="15px" 
-                                            placeholder="Store Title" ValidationGroup="Product" Width="300px"></asp:TextBox>
+                                            placeholder="Enter Product Category" ValidationGroup="Product" Width="300px"></asp:TextBox>
                                         <asp:Button ID="Button6" runat="server" BorderColor="#CCCCCC" 
                                             BorderStyle="Solid" BorderWidth="1px" Font-Names="Calibri" Font-Size="Small" 
                                             Height="28px" Text="ADD" ValidationGroup="Product" Width="80px" 
@@ -139,12 +139,13 @@
                                             ControlToValidate="TextBox8" ErrorMessage="Enter Product Category" 
                                             Font-Names="Calibri" Font-Size="Small" ForeColor="#CC3300" 
                                             ValidationGroup="Product"></asp:RequiredFieldValidator>
-                                        <asp:DataList ID="DataList1" runat="server" RepeatColumns="3">
+                                        <asp:DataList ID="DataList1" runat="server" RepeatColumns="3" 
+                                            onitemcommand="DataList1_ItemCommand">
                                         <ItemTemplate>
                                         <div style="height:15px; padding-top:3px; padding-bottom:5px; min-width:50px;">
                                             <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Delete" 
                                                 Font-Bold="False" Font-Names="Calibri" Font-Size="Small" Font-Underline="False" 
-                                                ForeColor="#CC3300">X</asp:LinkButton>
+                                                ForeColor="#CC3300" CommandArgument='<%# Eval("PR_ID") %>'>X</asp:LinkButton>
                                             <asp:Label ID="Label4" runat="server" Font-Bold="False" Font-Names="Calibri" 
                                                 Font-Size="Small" ForeColor="Black" Text='<%# Eval("Product_Title") %>'></asp:Label>
                                             </div>
@@ -161,7 +162,7 @@
                                     </div>
                                     <div class="base">
                                         <asp:TextBox ID="Pgt_title" runat="server" CssClass="txt_pd" 
-                                            Height="15px" placeholder="Search Your Location" TextMode="SingleLine" 
+                                            Height="15px" placeholder="Enter Photo Title" TextMode="SingleLine" 
                                             ValidationGroup="IMAGE" Width="300px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
                                             ControlToValidate="Pgt_title" ErrorMessage="Enter Product Category" 
