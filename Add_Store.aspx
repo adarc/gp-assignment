@@ -9,9 +9,7 @@
          .base_left{height:20px;}
          .ddl{border:1px solid silver; height:30px;}
         </style>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>  
-      <script src="Js/GoogleAPIScript.js" type="text/javascript"></script>  
-      <link href="Css/MapStyleSheet.css" rel="stylesheet" type="text/css" />  
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container">
@@ -23,9 +21,9 @@
                             <asp:Label ID="Label1" runat="server" Font-Bold="False" Font-Names="Calibri" 
                     Font-Size="Large" ForeColor="#336699" Text="ADD NEW STORE"></asp:Label>
                         </td>
-                        <td width="200px" >
+                        <td width="200px">
                             </td>
-                        <td width="50px" >
+                        <td width="50px">
                             <asp:Button ID="Button1" runat="server" BorderColor="#CCCCCC" 
                     BorderStyle="Solid" BorderWidth="1px" Font-Names="Calibri" Font-Size="Small" 
                     Height="25px" Text="BACK" PostBackUrl="~/View_Stores.aspx" />
@@ -86,16 +84,24 @@
                                         <asp:Label ID="Label3" runat="server" Font-Bold="False" Font-Names="Calibri" 
                                             Font-Size="Large" ForeColor="#336699" Text="STORE LOCATION"></asp:Label>
                                     </div>
+                                   
                                     <div class="base">
-                                        <asp:TextBox ID="txtsearch" runat="server" CssClass="txt_pd apply" 
+                                    
+                                        <asp:TextBox ID="searchbox" runat="server" CssClass="txt_pd apply" 
                                             Height="15px" placeholder="Search Your Location" TextMode="SingleLine" 
-                                            ValidationGroup="ADD" Width="300px"></asp:TextBox>
+                                            ValidationGroup="ADD" Width="300px"></asp:TextBox> 
+                                            <asp:TextBox ID="latbox" runat="server" CssClass="txt_pd" 
+                                            Height="15px" placeholder="Latitude" TextMode="SingleLine" 
+                                            ValidationGroup="ADD" Width="100px"></asp:TextBox>
+                                            <asp:TextBox ID="lngbox" runat="server" CssClass="txt_pd" 
+                                            Height="15px" placeholder="Longitude" TextMode="SingleLine" 
+                                            ValidationGroup="ADD" Width="100px"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
-                                            ControlToValidate="txtsearch" ErrorMessage="Search Your Location" 
+                                            ControlToValidate="searchbox" ErrorMessage="Search Your Location" 
                                             Font-Names="Calibri" Font-Size="Small" ForeColor="#CC3300" 
                                             ValidationGroup="ADD"></asp:RequiredFieldValidator>
                                     </div>
-                                    <div ID="divloadMap" align="left" style="height:190px;">
+                                    <div ID="map-canvas" align="left" style="height:190px;">
                                     </div>
                                     <div class="base" style="padding-top: 10px;">
                                         <asp:Button ID="Button2" runat="server" BackColor="#FF9933" 

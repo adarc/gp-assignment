@@ -12,8 +12,8 @@ using System.Data;
 public class ClassCon
 {
  string constr = "Data Source=DELL\\SQLEXPRESS;Initial Catalog=Store;integrated security=true";
-   
-   // string constr = "Data Source=69.16.244.128 ;Initial Catalog=ea_db;uid=eng_EA;pwd=India@487";
+
+ // string constr = "Data Source=69.73.147.53 ;Initial Catalog=adventstp_com_GP;uid=GPA;pwd=India@487";
     SqlConnection con = new SqlConnection();
     SqlCommand cmd = new SqlCommand();
     SqlDataAdapter sda = new SqlDataAdapter();

@@ -30,11 +30,74 @@
     </div></div>
 <div style="width:100%;"> <div style="width:90%; height:450px; padding-top: 10px;" 
         align="center">
+    <asp:DataList ID="DataList1" runat="server" BackColor="White" 
+        BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
+        GridLines="Horizontal" onitemcommand="DataList1_ItemCommand" RepeatColumns="2" 
+        Width="100%">
+        <AlternatingItemStyle BackColor="#F7F7F7" />
+        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+        <ItemStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+        <ItemTemplate>
+            <table cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="left" rowspan="4" width="160px">
+                        <asp:Image ID="Image1" runat="server" Height="100px" Width="150px" 
+                            ImageUrl='<%# Eval("Cover") %>' />
+                    </td>
+                    <td align="left">
+                        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Names="Calibri" 
+                            Font-Size="Large" ForeColor="#336699" Text='<%# Eval("name") %>' 
+                            style="min-width:200px;"></asp:Label>
+                    </td>
+                    <td align="left">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <asp:Label ID="Label2" runat="server" Enabled="False" Font-Bold="False" 
+                            Font-Names="Calibri" Font-Size="Small" ForeColor="Black" 
+                            Text="Rigistered Since: "></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Font-Bold="False" Font-Names="Calibri" 
+                            Font-Size="Small" ForeColor="Black" Text='<%# Eval("Reg_Date") %>'></asp:Label>
+                    </td>
+                    <td align="center" rowspan="3" width="100px">
+                        <asp:Button ID="Button1" runat="server" BackColor="#FF9933" 
+                            BorderColor="#FF9933" BorderStyle="Solid" BorderWidth="1px" 
+                            CommandArgument='<%# Eval("S_Id") %>' CommandName="Detail" Font-Names="Calibri" 
+                            Font-Size="Small" ForeColor="White" Height="25px" Text="DETAIL" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <asp:Label ID="Label4" runat="server" Enabled="False" Font-Bold="False" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" Text="Contact No. :"></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Enabled="False" Font-Bold="False" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" Text="+91"></asp:Label>
+                        <asp:Label ID="Label6" runat="server" Enabled="False" Font-Bold="False" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" 
+                            Text='<%# Eval("Contact_No") %>'></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <asp:Label ID="Label7" runat="server" Enabled="False" Font-Bold="False" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" Text="E-Mail ID :"></asp:Label>
+                        <asp:Label ID="Label8" runat="server" Enabled="False" Font-Bold="False" 
+                            Font-Names="Verdana" Font-Size="Small" ForeColor="Black" 
+                            Text='<%# Eval("E_Mail") %>'></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </ItemTemplate>
+        <SelectedItemStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+    </asp:DataList>
     <asp:GridView ID="GridView1" runat="server" BackColor="White" 
         BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
         Font-Bold="False" Font-Names="Calibri" Font-Size="Medium" 
         AllowPaging="True" AutoGenerateColumns="False" 
-        onpageindexchanging="GridView1_PageIndexChanging" Width="100%">
+        onpageindexchanging="GridView1_PageIndexChanging" Width="100%" 
+        Visible="False">
         <Columns>
             <asp:BoundField DataField="name" HeaderText="Store Title">
             <ItemStyle HorizontalAlign="Center" Wrap="False" />

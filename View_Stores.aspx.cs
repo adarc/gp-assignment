@@ -27,6 +27,8 @@ public partial class View_Stores : System.Web.UI.Page
        
         GridView1.DataSource = c1.selectds(str);
         GridView1.DataBind();
+        DataList1.DataSource = c1.selectds(str);
+        DataList1.DataBind();
         Label3.Text="[ "+ GridView1.Rows.Count.ToString()+" ]";
         if (GridView1.Rows.Count < 1)
         {
@@ -45,5 +47,12 @@ public partial class View_Stores : System.Web.UI.Page
         LinkButton1.Visible = false;
         Label2.Visible = false;
         TextBox1.Text = "";
+    }
+    protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        if (e.CommandName == "Detail")
+        {
+            Response.Redirect("Store_Profile.aspx?Store="+e.CommandArgument);
+        }
     }
 }

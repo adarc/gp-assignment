@@ -15,14 +15,15 @@ public partial class Add_Store : System.Web.UI.Page
     protected void Button2_Click(object sender, EventArgs e)
     {
         //Add New Store 
-        string str = "Insert into tbl_Store (Name,Contact_No, E_Mail,About_Store, Address, Status, Reg_Date) Values";
+        string str = "Insert into tbl_Store (Name,Contact_No, E_Mail,About_Store, Address, Status,Cover, Reg_Date) Values";
         str += "(";
         str += "'"+TextBox1.Text+"',";
         str += "'" + TextBox2.Text + "',";
         str += "'" + TextBox5.Text + "',";
         str += "'" + TextBox7.Text + "',";
-        str += "'" + txtsearch.Text + "',";
+        str += "'" + searchbox.Text + "',";
         str += "'TRUE',";
+        str += "'~/Images/images.jpg',";
         str += "'" + DateTime.Now.ToShortDateString()+ "'";
         str += ")";
         c1.executeQry(str);
