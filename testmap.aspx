@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="test.aspx.cs" Inherits="test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="testmap.aspx.cs" Inherits="testmap" %>
 
 <%@ Register src="Map.ascx" tagname="Map" tagprefix="uc1" %>
 
@@ -20,8 +20,9 @@
 <div> 
 <asp:TextBox id="txtsearch" runat="server" class="apply" type="text" 
         placeholder="Enter Search Place e.g Gopalpura Jaipur" AutoPostBack="True" 
-        CssClass="txt_pd apply" Height="30px" ontextchanged="txtsearch_TextChanged" ></asp:TextBox> 
-    <div id="divloadMap" style="height: 250px"></div> </div> 
+        CssClass="txt_pd apply" Height="30px" 
+        ontextchanged="txtsearch_TextChanged" onload="txtsearch_Load" Visible="False" ></asp:TextBox> 
+    <div id="divloadMap" style="height: 300px"></div> </div> 
 </form>
     </body>
 </html>

@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+
 
 public partial class Store_Profile : System.Web.UI.Page
 {
@@ -15,6 +17,7 @@ public partial class Store_Profile : System.Web.UI.Page
         if (Request.QueryString["Store"] != null)
         {
             string id = Request.QueryString["Store"].ToString();
+           
             if (!IsPostBack)
             {
                 Products(id);
@@ -30,7 +33,7 @@ public partial class Store_Profile : System.Web.UI.Page
                 Label5.Text = "Welcome in "+rd["name"].ToString();
                 Image1.ImageUrl = rd["Cover"].ToString();
                 Label6.Text = rd["About_Store"].ToString();
-
+                Session.Add("ID", rd["Address"].ToString());
             }
             if (Image1.ImageUrl == "~/Images/images.jpg")
             {
@@ -65,12 +68,22 @@ public partial class Store_Profile : System.Web.UI.Page
     {
         if(FileUpload1.HasFile)
         {
-            string path;
-              FileUpload1.SaveAs(Server.MapPath("~/Photos/") + FileUpload1.FileName);
-            path = "~/Photos/" + FileUpload1.FileName;
-        string str = "Update tbl_store set cover='"+path+"' where S_id='"+Request.QueryString["Store"].ToString()+"'";
-        c1.executeQry(str);
-        Image1.ImageUrl = path;
+
+                    string uploadFolder = Request.PhysicalApplicationPath + "PHOTO\\";
+            string extn = Path.GetExtension(FileUpload1.PostedFile.FileName);
+            string profilename = Request.QueryString["Store"].ToString()+ "_Coverphoto";
+            if (extn == ".png" || extn == ".jpg" || extn == ".gif" || extn == ".bmp")
+            {
+                FileUpload1.SaveAs(uploadFolder + profilename + extn);
+
+                string path = "~/PHOTO/" + profilename + extn;
+                //string path;
+                //FileUpload1.SaveAs(Server.MapPath("~/Photos/") + FileUpload1.FileName);
+                //path = "~/Photos/" + FileUpload1.FileName;
+                string str = "Update tbl_store set cover='" + path + "' where S_id='" + Request.QueryString["Store"].ToString() + "'";
+                c1.executeQry(str);
+                Image1.ImageUrl = path;
+            }
         }
     }
 }

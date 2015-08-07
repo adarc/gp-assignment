@@ -56,16 +56,17 @@
                                             Enabled="False">+91</asp:TextBox>
                                         <asp:TextBox ID="TextBox2" runat="server" CssClass="txt_pd" Height="15px" 
                                             placeholder="Contact Number" ValidationGroup="ADD" Width="253px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                                            ControlToValidate="TextBox2" ErrorMessage="Enter Contact" Font-Names="Calibri" 
-                                            Font-Size="Small" ForeColor="#CC3300" ValidationGroup="ADD"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                            ControlToValidate="TextBox2" ErrorMessage="Invalid Number" Font-Names="Calibri" 
+                                            Font-Size="Small" ForeColor="#CC3300" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
                                     </div>
                                     <div class="base">
                                         <asp:TextBox ID="TextBox5" runat="server" CssClass="txt_pd" Height="15px" 
                                             placeholder="E-Mail ID" ValidationGroup="ADD" Width="300px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
-                                            ControlToValidate="TextBox5" ErrorMessage="Enter E-Mail" Font-Names="Calibri" 
-                                            Font-Size="Small" ForeColor="#CC3300" ValidationGroup="ADD"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                                            ControlToValidate="TextBox5" ErrorMessage="Invalid Number" Font-Names="Calibri" 
+                                            Font-Size="Small" ForeColor="#CC3300" 
+                                            ValidationExpression="^(.+)@([^\.].*)\.([a-z]{2,})$"></asp:RegularExpressionValidator>
                                     </div>
                                     <div align="left">
                                         <asp:TextBox ID="TextBox7" runat="server" CssClass="txt_pd" Height="150px" 
@@ -85,23 +86,8 @@
                                             Font-Size="Large" ForeColor="#336699" Text="STORE LOCATION"></asp:Label>
                                     </div>
                                    
-                                    <div class="base">
-                                    
-                                        <asp:TextBox ID="searchbox" runat="server" CssClass="txt_pd apply" 
-                                            Height="15px" placeholder="Search Your Location" TextMode="SingleLine" 
-                                            ValidationGroup="ADD" Width="300px"></asp:TextBox> 
-                                            <asp:TextBox ID="latbox" runat="server" CssClass="txt_pd" 
-                                            Height="15px" placeholder="Latitude" TextMode="SingleLine" 
-                                            ValidationGroup="ADD" Width="100px"></asp:TextBox>
-                                            <asp:TextBox ID="lngbox" runat="server" CssClass="txt_pd" 
-                                            Height="15px" placeholder="Longitude" TextMode="SingleLine" 
-                                            ValidationGroup="ADD" Width="100px"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
-                                            ControlToValidate="searchbox" ErrorMessage="Search Your Location" 
-                                            Font-Names="Calibri" Font-Size="Small" ForeColor="#CC3300" 
-                                            ValidationGroup="ADD"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div ID="map-canvas" align="left" style="height:190px;">
+                                    <div ID="map-canva" align="left" style="height:300px;">
+                                    <iframe src="test.aspx" style="border:0px none; width:100%; height:300px;"></iframe>
                                     </div>
                                     <div class="base" style="padding-top: 10px;">
                                         <asp:Button ID="Button2" runat="server" BackColor="#FF9933" 
@@ -209,7 +195,7 @@
                     <div class="container"> 
                     <div class="base" style="padding-top:10px;">
                         <asp:Label ID="Label7" runat="server" Font-Bold="False" Font-Names="Calibri" 
-                            Font-Size="Large" ForeColor="#336699" Text="STORE OPENNG HOURS"></asp:Label>
+                            Font-Size="Large" ForeColor="#336699" Text="STORE OPENING HOURS"></asp:Label>
                         </div>
                      <div align="left">
                          <table cellpadding="0" cellspacing="0" width="500px">

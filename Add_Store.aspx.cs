@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Add_Store : System.Web.UI.Page
 {
@@ -21,7 +22,7 @@ public partial class Add_Store : System.Web.UI.Page
         str += "'" + TextBox2.Text + "',";
         str += "'" + TextBox5.Text + "',";
         str += "'" + TextBox7.Text + "',";
-        str += "'" + searchbox.Text + "',";
+        str += "'" + Session["Loc"].ToString() + "',";
         str += "'TRUE',";
         str += "'~/Images/images.jpg',";
         str += "'" + DateTime.Now.ToShortDateString()+ "'";
@@ -59,19 +60,30 @@ public partial class Add_Store : System.Web.UI.Page
     {
         if (FileUpload1.HasFile)
         {
-            string path;
-            FileUpload1.SaveAs(Server.MapPath("~/Photos/") + FileUpload1.FileName);
-            path = "~/Photos/" + FileUpload1.FileName;
             string store_id = c1.selectScaler("Select Max(S_Id) from tbl_Store");
-            string str = "Insert into tbl_Photogallery (Image_Title, Image_URL, Store_Id) Values";
-            str += "(";
-            str += "'" + Pgt_title.Text + "',";
-            str += "'" + path + "',";
-            str += "'" + store_id + "'";
-            str += ")";
-            c1.executeQry(str);
-            MultiView1.ActiveViewIndex = 1;
-            Photogallery();
+            string max_id = c1.selectScaler("Select Max(P_Id) from tbl_Photogallery");
+                 string uploadFolder = Request.PhysicalApplicationPath + "PHOTO\\";
+            string extn = Path.GetExtension(FileUpload1.PostedFile.FileName);
+            string profilename = store_id + "_Galleryphoto" + max_id;
+            if (extn == ".png" || extn == ".jpg" || extn == ".gif" || extn == ".bmp")
+            {
+                FileUpload1.SaveAs(uploadFolder + profilename + extn);
+
+                string path = "~/PHOTO/" + profilename + extn;
+                //string path;
+               // FileUpload1.SaveAs(Server.MapPath("~/Photos/") + FileUpload1.FileName);
+               // path = "~/Photos/" + FileUpload1.FileName;
+               
+                string str = "Insert into tbl_Photogallery (Image_Title, Image_URL, Store_Id) Values";
+                str += "(";
+                str += "'" + Pgt_title.Text + "',";
+                str += "'" + path + "',";
+                str += "'" + store_id + "'";
+                str += ")";
+                c1.executeQry(str);
+                MultiView1.ActiveViewIndex = 1;
+                Photogallery();
+            }
         }
 
     }

@@ -275,7 +275,7 @@
                     Font-Size="Small" ForeColor="#336699" Text="STORE LOCATION"></asp:Label>
                                </div>
                 <div style="border: 1px solid #CCCCFF; height:300px; margin-bottom:40px;">
-                
+                <iframe src="testmap.aspx" style="border:0px none; width:100%; height:300px;"></iframe>
                 </div>
                 </div>
             </div>
